@@ -6,13 +6,15 @@ const Profile = () => {
     return (
         <main className={s.content}>
             <div>
-                <img
-                    src='https://womo.ua/wp-content/uploads/2015/02/social-network-670x300.jpg' width='90%'
-                    alt='image'
+                <img className={s.image}
+                     src='https://stopfake.kz/wp-content/uploads/2020/09/1-3.jpg'
+                     alt='main image'
                 />
             </div>
-            <div>AVA + Description</div>
-            <MyPosts/>
+            <div className={s.text}>
+                <div>AVA + Description</div>
+                <MyPosts/>
+            </div>
         </main>
     );
 };

@@ -1,6 +1,15 @@
 .content {
     grid-area: c;
     background: #c9866f;
+}
+
+.image {
+    object-fit: cover;
+    width: 100%;
+    height: 250px;
+}
+
+.text {
     padding-left: 20px;
 }
 

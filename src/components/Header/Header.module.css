@@ -2,3 +2,7 @@
     grid-area: h;
     background: orange;
 }
+
+.header img {
+    width: 60px;
+}

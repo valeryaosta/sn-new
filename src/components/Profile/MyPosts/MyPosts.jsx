@@ -13,10 +13,10 @@ const MyPosts = () => {
                 <button className={`${s.btn} ${s.btn2}`}>Remove</button>
             </div>
             <div className={s.postsWrapper}>
-                <Post/>
-                <Post/>
-                <Post/>
-                <Post/>
+                <Post message='Hello world!' likesCount='23'/>
+                <Post message='React, Redux.. you will know them cool!' likesCount='15'/>
+                <Post message='Each failure is the next success!' likesCount='100'/>
+                <Post message='Wake me up when September ends..' likesCount='7'/>
             </div>
         </div>
     );
