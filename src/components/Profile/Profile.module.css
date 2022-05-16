@@ -1,5 +1,6 @@
 .content {
     grid-area: c;
     background: #c9866f;
+    padding-left: 20px;
 }
 
