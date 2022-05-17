@@ -4,7 +4,7 @@ import MyPosts from "./MyPosts/MyPosts";
 
 const Profile = () => {
     return (
-        <main className={s.content}>
+        <main>
             <div>
                 <img className={s.image}
                      src='https://stopfake.kz/wp-content/uploads/2020/09/1-3.jpg'
