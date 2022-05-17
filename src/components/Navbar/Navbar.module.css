@@ -10,17 +10,15 @@
 }
 
 .item a {
-    text-decoration: none;
     color: #dde50a;
+    text-decoration: none;
 }
 
-.active a {
+.item a:hover {
     color: #e7a425;
     font-weight: 500;
 }
 
-.item a:hover,
-.item a:active {
-    color: #e7a425;
-    font-weight: 500;
+.item a.activeLink {
+    color: goldenrod;
 }
