@@ -3,6 +3,14 @@ import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 
 const MyPosts = () => {
+
+    const postData = [
+        {id: 1, message: 'Hello world!', likesCount: 23},
+        {id: 2, message: 'React, Redux.. you will know them cool!', likesCount: 15},
+        {id: 3, message: 'Each failure is the next success!', likesCount: 100},
+        {id: 4, message: 'Wake me up when September ends..', likesCount: 7}
+    ]
+
     return (
         <div className={s.postsBlock}>
             MyPosts
@@ -13,10 +21,10 @@ const MyPosts = () => {
                 <button className={`${s.btn} ${s.btn2}`}>Remove</button>
             </div>
             <div className={s.postsWrapper}>
-                <Post message='Hello world!' likesCount='23'/>
-                <Post message='React, Redux.. you will know them cool!' likesCount='15'/>
-                <Post message='Each failure is the next success!' likesCount='100'/>
-                <Post message='Wake me up when September ends..' likesCount='7'/>
+                <Post message={postData[0].message} likesCount={postData[0].likesCount}/>
+                <Post message={postData[1].message} likesCount={postData[1].likesCount}/>
+                <Post message={postData[2].message} likesCount={postData[2].likesCount}/>
+                <Post message={postData[3].message} likesCount={postData[3].likesCount}/>
             </div>
         </div>
     );
