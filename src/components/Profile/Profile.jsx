@@ -1,18 +1,13 @@
 import React from 'react';
-import s from './Profile.module.css'
+// import s from './Profile.module.css'
 import MyPosts from "./MyPosts/MyPosts";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 const Profile = () => {
     return (
         <main>
             <div>
-                <img className={s.image}
-                     src='https://stopfake.kz/wp-content/uploads/2020/09/1-3.jpg'
-                     alt='main image'
-                />
-            </div>
-            <div className={s.text}>
-                <div>AVA + Description</div>
+                <ProfileInfo/>
                 <MyPosts/>
             </div>
         </main>

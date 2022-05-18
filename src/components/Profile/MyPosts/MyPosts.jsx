@@ -4,7 +4,7 @@ import Post from "./Post/Post";
 
 const MyPosts = () => {
     return (
-        <div>
+        <div className={s.postsBlock}>
             MyPosts
             <div className={s.wrapper}>
             <textarea placeholder="Remember, be nice!" cols="30" rows="5">
