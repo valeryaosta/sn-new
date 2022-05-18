@@ -20,5 +20,21 @@
 }
 
 .messages .message {
+    color: #2c063b;
+    font-weight: 600;
+}
 
+.dialog a {
+    color: #dde50a;
+    text-decoration: none;
+}
+
+.dialog a:hover {
+    color: #2c063b;
+    font-weight: 500;
+}
+
+.dialog a.activeLink {
+    color: #2c063b;
+    font-weight: 700;
 }
