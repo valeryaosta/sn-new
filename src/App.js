@@ -9,11 +9,17 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 
-const App = ({posts, dialogs, messages}) => {
+const App = ({state}) => {
+
+    const {dialogsPage, profilePage, sidebar} = state
+    const {dialogs, messages} = dialogsPage
+    const {posts} = profilePage
+    const {friends} = sidebar
+
     return (
         <div className='app-wrapper'>
             <Header/>
-            <Navbar/>
+            <Navbar friends={friends}/>
             <div className='app-wrapper-content'>
                 <Routes>
                     <Route path='/dialogs/*' element={<Dialogs dialogs={dialogs} messages={messages}/>}/>
