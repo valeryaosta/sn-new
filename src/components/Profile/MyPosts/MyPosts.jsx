@@ -10,9 +10,8 @@ const MyPosts = ({posts, addPost}) => {
 
     const onAddPost = () => {
         let text = textareaRef.current.value
-        // alert(text)
-        debugger
         addPost(text)
+        textareaRef.current.value = '';
     }
 
     const onRemovePost = () => {
