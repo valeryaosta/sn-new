@@ -4,7 +4,6 @@ import style from '../Profile/MyPosts/MyPosts.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
 
-
 const Dialogs = ({dialogs, messages}) => {
 
     const textRef = useRef(null)
@@ -14,8 +13,8 @@ const Dialogs = ({dialogs, messages}) => {
     const messagesElements = messages.map((msg) => <Message message={msg.message} key={msg.id}/>)
 
     const onAddPost = () => {
-        const newText = textRef.current.value
-        alert(newText)
+        // const newText = textRef.current.value
+        // alert(newText)
     }
 
     return (

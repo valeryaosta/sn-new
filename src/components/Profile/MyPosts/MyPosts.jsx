@@ -2,7 +2,7 @@ import React, {useRef} from 'react';
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 
-const MyPosts = ({posts}) => {
+const MyPosts = ({posts, addPost}) => {
 
     const textareaRef = useRef(null)
 
@@ -10,7 +10,9 @@ const MyPosts = ({posts}) => {
 
     const onAddPost = () => {
         let text = textareaRef.current.value
-        alert(text)
+        // alert(text)
+        debugger
+        addPost(text)
     }
 
     const onRemovePost = () => {
