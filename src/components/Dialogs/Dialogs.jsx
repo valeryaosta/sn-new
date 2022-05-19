@@ -4,25 +4,7 @@ import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
 
 
-const Dialogs = () => {
-
-    const dialogs = [
-        {id: 1, name: 'Valery'},
-        {id: 2, name: 'Dmitry'},
-        {id: 3, name: 'Kseniya'},
-        {id: 4, name: 'Vitaliy'},
-        {id: 5, name: 'Vladislav'},
-        {id: 6, name: 'Eugene'}
-    ]
-
-    const messages = [
-        {id: 1, message: 'Hello wooooah here!'},
-        {id: 2, message: 'I don’t care what you think about me. I don’t think about you at all.'},
-        {id: 3, message: 'Life is a series of choices.'},
-        {id: 4, message: 'Today is the best day.'},
-        {id: 5, message: 'Love is in the air.'},
-        {id: 6, message: 'Bla bla bla'}
-    ]
+const Dialogs = ({dialogs, messages}) => {
 
     const dialogsElements = dialogs.map((d) => <DialogItem id={d.id} name={d.name} key={d.id}/>)
 
