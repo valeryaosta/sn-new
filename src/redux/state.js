@@ -38,26 +38,31 @@ export const state = {
             {id: 3, message: 'Each failure is the next success!', likesCount: 100},
             {id: 4, message: 'Wake me up when September ends..', likesCount: 7}
         ],
+        newPostText: 'it-kamasutra'
     },
     sidebar: {
         friends: [
             {id: 1, name: 'Rihanna', ava: 'https://cdn.fishki.net/upload/post/201602/25/1861638/10_1.jpg'},
-            {
-                id: 2,
-                name: 'Johny',
-                ava: 'https://4tololo.ru/sites/default/files/images/20151604153454.jpg?itok=vs2D2dB2'
-            },
-            {id: 3, name: 'Meaghan', ava: 'https://4tololo.ru/sites/default/files/images/20151308202247.jpg'},
+            {id: 2, name: 'Johny', ava: 'https://4tololo.ru/sites/default/files/images/20151604153454.jpg?itok=vs2D2dB2'},
+            {id: 3, name: 'Megan', ava: 'https://4tololo.ru/sites/default/files/images/20151308202247.jpg'},
         ]
     }
 }
 
-export const addPost = (postMessage) => {
+window.state = state;
+
+export const addPost = () => {
     let newPost = {
         id: 5,
-        message: postMessage,
+        message: state.profilePage.newPostText,
         likesCount: 0
     }
     state.profilePage.posts.push(newPost)
+    state.profilePage.newPostText = ''
+    rerenderEntireTree(state)
+}
+
+export const updateNewPostText = (newText) => {
+    state.profilePage.newPostText = newText
     rerenderEntireTree(state)
 }

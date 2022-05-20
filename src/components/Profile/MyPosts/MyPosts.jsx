@@ -2,7 +2,7 @@ import React, {useRef} from 'react';
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 
-const MyPosts = ({posts, addPost}) => {
+const MyPosts = ({posts, addPost, newPostText, updateNewPostText}) => {
 
     const textareaRef = useRef(null)
 
@@ -11,19 +11,28 @@ const MyPosts = ({posts, addPost}) => {
     const onAddPost = () => {
         let text = textareaRef.current.value
         addPost(text)
-        textareaRef.current.value = '';
     }
 
     const onRemovePost = () => {
         alert('remove')
     }
 
+    const onChangeHandle = () => {
+        let text = textareaRef.current.value
+        updateNewPostText(text)
+    }
+
     return (
         <div className={s.postsBlock}>
             MyPosts
             <div className={s.wrapper}>
-            <textarea ref={textareaRef} placeholder="Remember, be nice!" cols="30" rows="5">
-            </textarea>
+            <textarea ref={textareaRef}
+                    // placeholder="Remember, be nice!"
+                      value={newPostText}
+                      onChange={onChangeHandle}
+                      cols="30"
+                      rows="5"
+            />
                 <button onClick={onAddPost} className={`${s.btn} ${s.btn1}`}>Add post</button>
                 <button onClick={onRemovePost} className={`${s.btn} ${s.btn2}`}>Remove</button>
             </div>

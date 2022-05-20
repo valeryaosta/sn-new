@@ -25,8 +25,7 @@ const Dialogs = ({dialogs, messages}) => {
             <div className={s.messages}>
                 {messagesElements}
                 <div className={s.messageArea}>
-                <textarea ref={textRef} placeholder="Add a new message.." cols="30" rows="5">
-                </textarea>
+                <textarea ref={textRef} placeholder="Add a new message.." cols="30" rows="5"/>
                     <button onClick={onAddPost} className={`${style.btn} ${style.btn1}`}>Add post</button>
                 </div>
             </div>
