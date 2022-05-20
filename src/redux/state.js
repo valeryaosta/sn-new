@@ -1,4 +1,7 @@
-import {rerenderEntireTree} from "../render";
+
+let rerenderEntireTree = () => {
+    console.log('state has changed')
+}
 
 export const state = {
     dialogsPage: {
@@ -43,7 +46,11 @@ export const state = {
     sidebar: {
         friends: [
             {id: 1, name: 'Rihanna', ava: 'https://cdn.fishki.net/upload/post/201602/25/1861638/10_1.jpg'},
-            {id: 2, name: 'Johny', ava: 'https://4tololo.ru/sites/default/files/images/20151604153454.jpg?itok=vs2D2dB2'},
+            {
+                id: 2,
+                name: 'Johny',
+                ava: 'https://4tololo.ru/sites/default/files/images/20151604153454.jpg?itok=vs2D2dB2'
+            },
             {id: 3, name: 'Megan', ava: 'https://4tololo.ru/sites/default/files/images/20151308202247.jpg'},
         ]
     }
@@ -65,7 +72,7 @@ export const addPost = () => {
 
 export const updateNewPostText = (newText) => {
     state.profilePage.newPostText = newText
-    rerenderEntireTree(state)
+    rerenderEntireTree(state )
 }
 
 export const addMessage = () => {
@@ -82,4 +89,8 @@ export const addMessage = () => {
 export const updateMessage = (newMessageText) => {
     state.dialogsPage.newMessageText = newMessageText
     rerenderEntireTree(state)
+}
+
+export const subscribe = (observer) => {
+    rerenderEntireTree = observer
 }
