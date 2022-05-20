@@ -7,8 +7,7 @@ export const state = {
             {id: 2, message: 'I don’t care what you think about me. I don’t think about you at all.'},
             {id: 3, message: 'Life is a series of choices.'},
             {id: 4, message: 'Today is the best day.'},
-            {id: 5, message: 'Love is in the air.'},
-            {id: 6, message: 'Bla bla bla'}
+            {id: 5, message: 'Love is in the air.'}
         ],
         dialogs: [
             {
@@ -30,6 +29,7 @@ export const state = {
             {id: 5, name: 'Vladislav', ava: 'https://i.pinimg.com/236x/e1/9c/59/e19c59964329e7d9d95deec085380540.jpg'},
             {id: 6, name: 'Eugene', ava: 'https://i.pinimg.com/236x/a3/f6/37/a3f637a0d8e2e3cd9e8a5c2ca3202fa8.jpg'}
         ],
+        newMessageText: 'Add a new message..'
     },
     profilePage: {
         posts: [
@@ -38,7 +38,7 @@ export const state = {
             {id: 3, message: 'Each failure is the next success!', likesCount: 100},
             {id: 4, message: 'Wake me up when September ends..', likesCount: 7}
         ],
-        newPostText: 'it-kamasutra'
+        newPostText: 'Type here something..'
     },
     sidebar: {
         friends: [
@@ -57,6 +57,7 @@ export const addPost = () => {
         message: state.profilePage.newPostText,
         likesCount: 0
     }
+
     state.profilePage.posts.push(newPost)
     state.profilePage.newPostText = ''
     rerenderEntireTree(state)
@@ -64,5 +65,21 @@ export const addPost = () => {
 
 export const updateNewPostText = (newText) => {
     state.profilePage.newPostText = newText
+    rerenderEntireTree(state)
+}
+
+export const addMessage = () => {
+    let newMessage = {
+        id: 6,
+        message: state.dialogsPage.newMessageText
+    }
+
+    state.dialogsPage.messages.push(newMessage)
+    state.dialogsPage.newMessageText = ''
+    rerenderEntireTree(state)
+}
+
+export const updateMessage = (newMessageText) => {
+    state.dialogsPage.newMessageText = newMessageText
     rerenderEntireTree(state)
 }

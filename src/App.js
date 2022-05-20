@@ -9,10 +9,10 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 
-const App = ({state, addPost, updateNewPostText}) => {
+const App = ({state, addPost, updateNewPostText, addMessage, updateMessage}) => {
 
     const {dialogsPage, profilePage, sidebar} = state
-    const {dialogs, messages} = dialogsPage
+    const {dialogs, messages, newMessageText} = dialogsPage
     const {posts, newPostText} = profilePage
     const {friends} = sidebar
 
@@ -22,10 +22,15 @@ const App = ({state, addPost, updateNewPostText}) => {
             <Navbar friends={friends}/>
             <div className='app-wrapper-content'>
                 <Routes>
-                    <Route path='/dialogs/*' element={<Dialogs dialogs={dialogs} messages={messages} />}/>
-                    <Route path='/profile/*' element={<Profile posts={posts} addPost={addPost}
-                                                               newPostText={newPostText} updateNewPostText={updateNewPostText}
-                    />}/>
+                    <Route path='/dialogs/*' element={<Dialogs dialogs={dialogs} messages={messages}
+                                                               newMessageText={newMessageText}
+                                                               addMessage={addMessage} updateMessage={updateMessage}
+                    />}
+                    />
+                    <Route path='/profile/*' element={<Profile posts={posts}
+                                                               newPostText={newPostText}
+                                                               addPost={addPost} updateNewPostText={updateNewPostText}/>}
+                    />
                     <Route path='/news' element={<News/>}/>
                     <Route path='/music' element={<Music/>}/>
                     <Route path='/settings' element={<Settings/>}/>
