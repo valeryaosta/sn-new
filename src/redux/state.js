@@ -55,11 +55,15 @@ let store = {
             ]
         }
     },
+    _callSubscriber() {
+        console.log('state has changed')
+    },
+
     getState() {
         return this._state
     },
-    _callSubscriber() {
-        console.log('state has changed')
+    subscribe(observer) {
+        this._callSubscriber = observer
     },
     addPost() {
         let newPost = {
@@ -90,10 +94,26 @@ let store = {
         this._state.dialogsPage.newMessageText = newMessageText
         this._callSubscriber(this._state)
     },
-    subscribe(observer) {
-        this._callSubscriber = observer
+
+    dispatch(action) {
+        if(action.type === 'ADD-POST') {
+            let newPost = {
+                id: 5,
+                message: this._state.profilePage.newPostText,
+                likesCount: 0
+            }
+
+            this._state.profilePage.posts.push(newPost)
+            this._state.profilePage.newPostText = ''
+            this._callSubscriber(this._state)
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText
+            this._callSubscriber(this._state)
+        }
+
     }
 }
+
 export default store
 
 window.store = store;

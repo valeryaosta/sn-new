@@ -13,8 +13,7 @@ const Dialogs = ({dialogs, messages, newMessageText, addMessage, updateMessage})
     const messagesElements = messages.map((msg) => <Message message={msg.message} key={msg.id}/>)
 
     const onAddPost = () => {
-        const newText = textRef.current.value
-        addMessage(newText)
+        addMessage()
     }
 
     const onChangeHandle = () => {

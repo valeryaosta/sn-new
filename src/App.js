@@ -9,7 +9,7 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 
-const App = ({state, addPost, updateNewPostText, addMessage, updateMessage}) => {
+const App = ({state, addPost, updateNewPostText, addMessage, updateMessage, dispatch}) => {
 
     const {dialogsPage, profilePage, sidebar} = state
     const {dialogs, messages, newMessageText} = dialogsPage
@@ -22,14 +22,19 @@ const App = ({state, addPost, updateNewPostText, addMessage, updateMessage}) => 
             <Navbar friends={friends}/>
             <div className='app-wrapper-content'>
                 <Routes>
-                    <Route path='/dialogs/*' element={<Dialogs dialogs={dialogs} messages={messages}
+                    <Route path='/dialogs/*' element={<Dialogs dialogs={dialogs}
+                                                               messages={messages}
                                                                newMessageText={newMessageText}
-                                                               addMessage={addMessage} updateMessage={updateMessage}
+                                                               addMessage={addMessage}
+                                                               updateMessage={updateMessage}
                     />}
                     />
                     <Route path='/profile/*' element={<Profile posts={posts}
                                                                newPostText={newPostText}
-                                                               addPost={addPost} updateNewPostText={updateNewPostText}/>}
+                                                               // addPost={addPost}
+                                                               // updateNewPostText={updateNewPostText}
+                                                               dispatch={dispatch}
+                    />}
                     />
                     <Route path='/news' element={<News/>}/>
                     <Route path='/music' element={<Music/>}/>

@@ -2,15 +2,15 @@ import React, {useRef} from 'react';
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 
-const MyPosts = ({posts, addPost, newPostText, updateNewPostText}) => {
+const MyPosts = ({posts, addPost, newPostText, updateNewPostText, dispatch}) => {
 
     const textareaRef = useRef(null)
 
     const postsElements = posts.map((post) => <Post key={post.id} message={post.message} likesCount={post.likesCount}/>)
 
     const onAddPost = () => {
-        let text = textareaRef.current.value
-        addPost(text)
+        // addPost()
+        dispatch({type: 'ADD-POST'})
     }
 
     const onRemovePost = () => {
@@ -19,7 +19,8 @@ const MyPosts = ({posts, addPost, newPostText, updateNewPostText}) => {
 
     const onChangeHandle = () => {
         let text = textareaRef.current.value
-        updateNewPostText(text)
+        // updateNewPostText(text)
+        dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: text})
     }
 
     return (
