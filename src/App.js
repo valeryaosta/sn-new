@@ -9,7 +9,7 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 
-const App = ({state, dispatch}) => {
+const App = ({state, dispatch, store}) => {
 
     const {dialogsPage, profilePage, sidebar} = state
     const {dialogs, messages, newMessageText} = dialogsPage
