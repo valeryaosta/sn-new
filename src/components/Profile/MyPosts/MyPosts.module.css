@@ -5,6 +5,7 @@
 .wrapper {
     display: flex;
     align-items: flex-end;
+    margin-top: 20px;
 }
 
 .btn {
@@ -62,7 +63,7 @@ textarea {
     background: #dbaa9e;
     outline: none;
     padding: 10px;
-    margin-top: 20px;
+    margin-top: 5px;
     color: #2f1d1d;
 }
 

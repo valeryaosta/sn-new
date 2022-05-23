@@ -1,24 +1,23 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import s from './Dialogs.module.css'
 import style from '../Profile/MyPosts/MyPosts.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
+import {addMessageActionCreator, updateMessageActionCreator} from "../../redux/state";
 
-const Dialogs = ({dialogs, messages, newMessageText, addMessage, updateMessage}) => {
-
-    const textRef = useRef(null)
+const Dialogs = ({dialogs, messages, newMessageText, dispatch}) => {
 
     const dialogsElements = dialogs.map((d) => <DialogItem id={d.id} name={d.name} key={d.id} ava={d.ava}/>)
 
     const messagesElements = messages.map((msg) => <Message message={msg.message} key={msg.id}/>)
 
     const onAddPost = () => {
-        addMessage()
+        dispatch(addMessageActionCreator())
     }
 
-    const onChangeHandle = () => {
-        const newText = textRef.current.value
-        updateMessage(newText)
+    const onChangeHandle = (e) => {
+        const newText = e.currentTarget.value
+        dispatch(updateMessageActionCreator(newText))
     }
 
     return (
@@ -29,10 +28,9 @@ const Dialogs = ({dialogs, messages, newMessageText, addMessage, updateMessage})
             <div className={s.messages}>
                 {messagesElements}
                 <div className={s.messageArea}>
-                <textarea ref={textRef}
-                          value={newMessageText}
+                <textarea value={newMessageText}
                           onChange={onChangeHandle}
-                          // placeholder="Add a new message.."
+                          placeholder="Add a new message.."
                           cols="30" rows="5"
                 />
                     <button onClick={onAddPost} className={`${style.btn} ${style.btn1}`}>Add post</button>
