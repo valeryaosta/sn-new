@@ -1,30 +1,48 @@
 import React from 'react';
-import s from './MyPosts.module.css'
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
 import MyPosts from "./MyPosts";
+import {connect} from "react-redux";
 
+// const MyPostsContainer = ({store}) => {
+//     let state = store.getState()
+//
+//     let onAddPost = () => {
+//         store.dispatch(addPostActionCreator())
+//     }
+//
+//     let onPostChange = (text) => {
+//         let action = updateNewPostTextActionCreator(text)
+//         store.dispatch(action)
+//     }
+//
+//     return (
+//         <div className={s.postsBlock}>
+//           <MyPosts updateNewPostText={onPostChange}
+//                    addPost={onAddPost}
+//                    posts={state.profilePage.posts}
+//                    newPostText={state.profilePage.newPostText}
+//           />
+//         </div>
+//     );
+// };
 
-const MyPostsContainer = ({store}) => {
-    let state = store.getState()
-
-    let onAddPost = () => {
-        store.dispatch(addPostActionCreator())
+const mapStateToProps = (state) => {
+    return {
+        posts: state.profilePage.posts,
+        newPostText: state.profilePage.newPostText
     }
+}
 
-    let onPostChange = (text) => {
-        let action = updateNewPostTextActionCreator(text)
-        store.dispatch(action)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addPost: () => {
+            dispatch(addPostActionCreator())
+        },
+        updateNewPostText: (text) => {
+            dispatch(updateNewPostTextActionCreator(text))
+        }
     }
+}
 
-    return (
-        <div className={s.postsBlock}>
-          <MyPosts updateNewPostText={onPostChange}
-                   addPost={onAddPost}
-                   posts={state.profilePage.posts}
-                   newPostText={state.profilePage.newPostText}
-          />
-        </div>
-    );
-};
-
-export default MyPostsContainer;
+const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
+export default MyPostsContainer

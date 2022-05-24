@@ -9,21 +9,16 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
-const App = ({ store, /*state, dispatch, */ }) => {
 
-    // const {dialogsPage, profilePage, sidebar} = state
-    // const {dialogs, messages, newMessageText} = dialogsPage
-    // const {posts, newPostText} = profilePage
-    const {friends} = store.getState().sidebar
-
+const App = () => {
     return (
         <div className='app-wrapper'>
             <Header/>
-            <Navbar friends={friends}/>
+            <Navbar/>
             <div className='app-wrapper-content'>
                 <Routes>
-                    <Route path='/dialogs/*' element={<DialogsContainer store={store}/>}/>
-                    <Route path='/profile/*' element={<Profile store={store}/>}/>
+                    <Route path='/dialogs/*' element={<DialogsContainer/>}/>
+                    <Route path='/profile/*' element={<Profile/>}/>
                     <Route path='/news' element={<News/>}/>
                     <Route path='/music' element={<Music/>}/>
                     <Route path='/settings' element={<Settings/>}/>

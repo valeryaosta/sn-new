@@ -5,10 +5,10 @@ import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
 
 
-const Dialogs = ({dialogsPage, addMessage, updateMessageText}) => {
+const Dialogs = ({dialogs, messages, newMessageText, addMessage, updateMessageText}) => {
 
-    const dialogsElements = dialogsPage.dialogs.map((d) => <DialogItem id={d.id} name={d.name} key={d.id} ava={d.ava}/>)
-    const messagesElements = dialogsPage.messages.map((msg) => <Message message={msg.message} key={msg.id}/>)
+    const dialogsElements = dialogs.map((d) => <DialogItem id={d.id} name={d.name} key={d.id} ava={d.ava}/>)
+    const messagesElements = messages.map((msg) => <Message message={msg.message} key={msg.id}/>)
 
     const onAddPost = () => {
         addMessage()
@@ -27,7 +27,7 @@ const Dialogs = ({dialogsPage, addMessage, updateMessageText}) => {
             <div className={s.messages}>
                 {messagesElements}
                 <div className={s.messageArea}>
-                <textarea value={dialogsPage.newMessageText}
+                <textarea value={newMessageText}
                           onChange={onChangeHandle}
                           placeholder="Add a new message.."
                           cols="30" rows="5"

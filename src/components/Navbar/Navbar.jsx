@@ -1,8 +1,9 @@
 import React from 'react';
 import s from './Navbar.module.css'
 import {NavLink} from "react-router-dom";
+import {SidebarContainer} from "./Sidebar/Sidebar";
 
-const Navbar = ({friends}) => {
+const Navbar = () => {
     return (
         <nav className={s.nav}>
             <ul className={s.list}>
@@ -25,16 +26,7 @@ const Navbar = ({friends}) => {
                              className={({isActive}) => isActive ? s.activeLink : ''}>Settings</NavLink>
                 </li>
             </ul>
-
-            <div className={s.friendsWrapper}>
-                <p>My Friends</p>
-                <ul className={s.listFr}>
-                    {friends.map((fr) => {
-                        return <li key={fr.id}><img src={fr.ava} alt='friend avatar'/> {fr.name} </li>
-                    })}
-                </ul>
-            </div>
-
+            <SidebarContainer/>
         </nav>
     );
 };
