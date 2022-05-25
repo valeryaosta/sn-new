@@ -4,26 +4,25 @@ import {NavLink} from "react-router-dom";
 import {SidebarContainer} from "./Sidebar/Sidebar";
 
 const Navbar = () => {
+    const setActiveClass = ({isActive}) => isActive ? s.activeLink : ''
+
     return (
         <nav className={s.nav}>
             <ul className={s.list}>
                 <li className={`${s.item} ${s.activeLink}`}>
-                    <NavLink to='/profile'
-                             className={({isActive}) => isActive ? s.activeLink : ''}>Profile</NavLink>
+                    <NavLink to='/profile' className={setActiveClass}>Profile</NavLink>
                 </li>
                 <li className={s.item}>
-                    <NavLink to='/dialogs'
-                             className={({isActive}) => isActive ? s.activeLink : ''}>Messages</NavLink>
+                    <NavLink to='/dialogs' className={setActiveClass}>Messages</NavLink>
                 </li>
                 <li className={s.item}>
-                    <NavLink to='/news' className={({isActive}) => isActive ? s.activeLink : ''}>News</NavLink>
+                    <NavLink to='/news' className={setActiveClass}>News</NavLink>
                 </li>
                 <li className={s.item}>
-                    <NavLink to='/music' className={({isActive}) => isActive ? s.activeLink : ''}>Music</NavLink>
+                    <NavLink to='/music' className={setActiveClass}>Music</NavLink>
                 </li>
                 <li className={s.item}>
-                    <NavLink to='/settings'
-                             className={({isActive}) => isActive ? s.activeLink : ''}>Settings</NavLink>
+                    <NavLink to='/settings' className={setActiveClass}>Settings</NavLink>
                 </li>
             </ul>
             <SidebarContainer/>
