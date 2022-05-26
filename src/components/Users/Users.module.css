@@ -1,0 +1,128 @@
+.name {
+    margin: 15px 0 0 20px;
+    color: #704529;
+}
+
+.usersBlock {
+    margin: 30px 45px;
+}
+
+.usersBlock h2 {
+    margin: 0;
+}
+
+.userWrapper {
+    display: flex;
+    margin: 10px 0 20px 0;
+}
+
+.user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.user img {
+    width: 80px;
+    border-radius: 40px;
+}
+
+.customBtn {
+    width: 90px;
+    height: 40px;
+    color: #f8f8f8;
+    border-radius: 5px;
+    padding: 5px 5px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+    7px 7px 20px 0px rgba(0, 0, 0, .1),
+    4px 4px 5px 0px rgba(0, 0, 0, .1);
+    outline: none;
+}
+
+.btn {
+    background: #b621fe;
+    border: none;
+    z-index: 1;
+}
+
+.btn:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    background-color: #663dff;
+    border-radius: 5px;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+    7px 7px 20px 0px rgba(0, 0, 0, .1),
+    4px 4px 5px 0px rgba(0, 0, 0, .1);
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    color: #fff;
+}
+
+.btn:hover:after {
+    left: 0;
+    width: 100%;
+}
+
+.btn:active {
+    top: 2px;
+}
+
+.btn2 {
+    background: #501276;
+}
+
+.userInfo {
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    border: 2px solid rgb(102 94 77 / 60%);
+    border-radius: 10px;
+    box-shadow: 5px 5px 19px 1px #926b4c;
+    padding: 10px;
+    color: #54361b;
+}
+
+
+.leftSider {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-right: 15px;
+}
+
+.rightSider {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: right;
+}
+
+.boldText {
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.boldText2 {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+
+.status {
+    word-break: break-word;
+}
