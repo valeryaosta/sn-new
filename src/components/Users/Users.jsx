@@ -8,7 +8,7 @@ const Users = ({users, follow, unfollow, setUsers}) => {
 
     const getUsers = () => {
         if (users.length === 0) {
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=10`)
+            axios.get(`https://social-network.samuraijs.com/api/1.0/users`)
                 .then(res => setUsers(res.data.items))
         }
     }
