@@ -6,13 +6,17 @@ const Users = ({users, follow, unfollow, setUsers}) => {
 
     const photoUrl = 'https://newsd.in/wp-content/uploads/2019/11/04d62c82df95ec3ff3a230c681b36a14.jpg'
 
-    if (users.length === 0) {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=10`)
-            .then(res => setUsers(res.data.items))
+    const getUsers = () => {
+        if (users.length === 0) {
+            axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=10`)
+                .then(res => setUsers(res.data.items))
+        }
     }
+
 
     return (
         <>
+            <button onClick={getUsers}>Get Users</button>
             <h2 className={style.name}>Users</h2>
             <div className={style.usersBlock}>
                 {users.map((u) => <div key={u.id} className={style.userWrapper}>
