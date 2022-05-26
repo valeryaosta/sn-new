@@ -11,7 +11,9 @@ class UsersC extends React.Component {
         this.state = {
             photoUrl: 'https://newsd.in/wp-content/uploads/2019/11/04d62c82df95ec3ff3a230c681b36a14.jpg'
         }
+    }
 
+    componentDidMount() {
         axios.get(`https://social-network.samuraijs.com/api/1.0/users`)
             .then(res => this.props.setUsers(res.data.items))
     }
