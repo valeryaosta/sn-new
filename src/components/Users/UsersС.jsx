@@ -4,7 +4,6 @@ import axios from "axios";
 
 
 class UsersC extends React.Component {
-    // props - users, follow, unfollow, setUsers
 
     constructor(props) {
         super(props);
@@ -14,13 +13,41 @@ class UsersC extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            .then(res => {
+                this.props.setUsers(res.data.items);
+                this.props.setTotalUsersCount(res.data.totalCount)
+            })
+
+    }
+
+    onPageChanged = (pageNumber) => {
+        this.props.setCurrentPage(pageNumber)
+
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
             .then(res => this.props.setUsers(res.data.items))
     }
 
     render() {
+
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize)
+        let pages = []
+        for (let i = 1; i <= pagesCount; i++) {
+            pages.push(i)
+        }
+
         return (
             <>
+                <div className={style.userPages}>
+                    {pages.map(p => {
+                        return <span onClick={() => {
+                            this.onPageChanged(p)
+                        }}
+                                     className={this.props.currentPage === p ? style.selectedPage : ''}>{p}</span>
+                    })}
+                </div>
+
+
                 <h2 className={style.name}>Users</h2>
                 <div className={style.usersBlock}>
                     {this.props.users.map((u) => <div key={u.id} className={style.userWrapper}>

@@ -1,3 +1,8 @@
+.userPages {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .name {
     margin: 15px 0 0 20px;
     color: #704529;
@@ -125,4 +130,8 @@
 
 .status {
     word-break: break-word;
+}
+
+.selectedPage {
+    font-weight: bold;
 }
