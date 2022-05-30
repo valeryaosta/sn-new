@@ -6,5 +6,32 @@
 
 .description {
     padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    width: 650px;
+    box-shadow: 0 0 10px 5px rgb(174 112 112);
+    margin: 20px;
+}
+
+.avatar {
+    width: 160px;
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
+
+.fullName {
+    font-size: 24px !important;
+    margin-top: 0;
+}
+
+span {
+    display: block;
+    line-height: 32px;
+}
+
+.contacts {
+    display: flex;
+    flex-direction: column;
+    line-height: 32px;
 }
 
