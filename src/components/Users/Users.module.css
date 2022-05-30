@@ -1,6 +1,7 @@
 .userPages {
     overflow: hidden;
     text-overflow: ellipsis;
+    padding: 10px 20px;
 }
 
 .name {

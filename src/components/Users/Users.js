@@ -1,33 +1,40 @@
 import React from 'react';
-import style from './Users.module.css'
-import axios from "axios";
+import style from "./Users.module.css";
 
-const Users = ({users, follow, unfollow, setUsers}) => {
+const Users = (props) => {
 
     const photoUrl = 'https://newsd.in/wp-content/uploads/2019/11/04d62c82df95ec3ff3a230c681b36a14.jpg'
 
-    const getUsers = () => {
-        if (users.length === 0) {
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users`)
-                .then(res => setUsers(res.data.items))
-        }
+    const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
+    const pages = []
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i)
     }
-
 
     return (
         <>
-            <button onClick={getUsers}>Get Users</button>
+            <div className={style.userPages}>
+                {pages.map(p => {
+                    return <span onClick={() => {
+                        props.onPageChanged(p)
+                    }} className={props.currentPage === p ? style.selectedPage : ''}>
+                                    {p}
+                    </span>
+                })}
+            </div>
+
             <h2 className={style.name}>Users</h2>
             <div className={style.usersBlock}>
-                {users.map((u) => <div key={u.id} className={style.userWrapper}>
+                {props.users.map((u) => <div key={u.id} className={style.userWrapper}>
                         <div className={style.user}>
                             <img src={u.photos.small !== null ? u.photos.small : photoUrl} alt='user'/>
 
                             {u.followed
-                                ? <button onClick={() => unfollow(u.id)} className={`${style.customBtn} ${style.btn}`}>
+                                ? <button onClick={() => props.unfollow(u.id)}
+                                          className={`${style.customBtn} ${style.btn}`}>
                                     Follow
                                 </button>
-                                : <button onClick={() => follow(u.id)}
+                                : <button onClick={() => props.follow(u.id)}
                                           className={`${style.customBtn} ${style.btn} ${style.btn2}`}>
                                     Unfollow
                                 </button>
@@ -45,7 +52,6 @@ const Users = ({users, follow, unfollow, setUsers}) => {
                                 <span className={style.boldText2}>{'City'}</span>
                             </div>
                         </div>
-
 
                     </div>
                 )}
