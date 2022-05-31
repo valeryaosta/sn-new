@@ -1,7 +1,8 @@
 .userPages {
+    display: flex;
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding: 10px 20px;
 }
 
 .name {
