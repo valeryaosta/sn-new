@@ -35,7 +35,8 @@
     border-radius: 40px;
 }
 
-.customBtn {
+.follow {
+    background: #501276;
     width: 90px;
     height: 40px;
     color: #f8f8f8;
@@ -43,54 +44,37 @@
     padding: 5px 5px;
     font-family: 'Lato', sans-serif;
     font-weight: 500;
-    background: transparent;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    display: inline-block;
     box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
     7px 7px 20px 0px rgba(0, 0, 0, .1),
     4px 4px 5px 0px rgba(0, 0, 0, .1);
-    outline: none;
-}
-
-.btn {
-    background: #b621fe;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
     border: none;
-    z-index: 1;
 }
 
-.btn:after {
-    position: absolute;
-    content: "";
-    width: 0;
-    height: 100%;
-    top: 0;
-    right: 0;
-    z-index: -1;
-    background-color: #663dff;
+.unfollow {
+    background: #9925de;
+    width: 90px;
+    height: 40px;
+    color: #f8f8f8;
     border-radius: 5px;
+    padding: 5px 5px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
     box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
     7px 7px 20px 0px rgba(0, 0, 0, .1),
     4px 4px 5px 0px rgba(0, 0, 0, .1);
     transition: all 0.3s ease;
+    text-transform: uppercase;
+    border: none ;
 }
 
-.btn:hover {
-    color: #fff;
+.follow:disabled {
+    background: #a28cb1;
 }
 
-.btn:hover:after {
-    left: 0;
-    width: 100%;
-}
-
-.btn:active {
-    top: 2px;
-}
-
-.btn2 {
-    background: #501276;
+.unfollow:disabled {
+    background: #a28cb1;
 }
 
 .userInfo {
@@ -128,7 +112,6 @@
     font-weight: 600;
     font-size: 18px;
 }
-
 
 .status {
     word-break: break-word;
