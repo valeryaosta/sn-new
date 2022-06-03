@@ -1,9 +1,10 @@
 import React from 'react';
 import Profile from "./Profile";
 import {connect} from "react-redux";
-import {Navigate, useLocation, useNavigate, useParams} from "react-router-dom";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {getUserProfile} from "../../redux/profile-reducer";
 import WithAuthRedirect from "../../hoc/WithAuthRedirect";
+import {compose} from "redux";
 
 
 // wrapper function, which is identical in principle to withRouter (because of using router v6)
@@ -43,13 +44,16 @@ class ProfileContainer extends React.Component {
     }
 }
 
-
-const AuthRedirectComponent = WithAuthRedirect(ProfileContainer)
-
 const mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
     }
 }
 
-export default connect(mapStateToProps, {getUserProfile})(withRouter(AuthRedirectComponent));
+export default compose(
+    connect(mapStateToProps, {getUserProfile}),
+    withRouter,
+    WithAuthRedirect
+)(ProfileContainer)
+
+
