@@ -3,9 +3,10 @@ import s from './Dialogs.module.css'
 import style from '../Profile/MyPosts/MyPosts.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
+import {Navigate} from "react-router-dom";
 
 
-const Dialogs = ({dialogs, messages, newMessageText, addMessage, updateMessageText}) => {
+const Dialogs = ({dialogs, messages, newMessageText, addMessage, updateMessageText, isAuth}) => {
 
     const dialogsElements = dialogs.map((d) => <DialogItem id={d.id} name={d.name} key={d.id} ava={d.ava}/>)
     const messagesElements = messages.map((msg) => <Message message={msg.message} key={msg.id}/>)
@@ -17,6 +18,10 @@ const Dialogs = ({dialogs, messages, newMessageText, addMessage, updateMessageTe
     const onChangeHandle = (e) => {
         let newText = e.currentTarget.value
         updateMessageText(newText)
+    }
+
+    if (!isAuth) {
+        return <Navigate to="/login" replace/>
     }
 
     return (

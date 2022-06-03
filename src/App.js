@@ -9,6 +9,7 @@ import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import Login from "./components/Login/Login";
 
 
 const App = () => {
@@ -27,6 +28,8 @@ const App = () => {
                     <Route path='/news' element={<News/>}/>
                     <Route path='/music' element={<Music/>}/>
                     <Route path='/settings' element={<Settings/>}/>
+
+                    <Route path='/login' element={<Login/>}/>
 
                     <Route path='/404' element={<h1>Something went wrong...</h1>}/>
                     <Route path='*' element={<Navigate to='/404'/>}/>
