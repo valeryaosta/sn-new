@@ -3,7 +3,7 @@ import s from "../Profile.module.css";
 import Preloader from "../../common/Preloader/Preloader";
 import ProfileStatus from "./ProfileStatus";
 
-const ProfileInfo = ({profile}) => {
+const ProfileInfo = ({profile, status, updateStatus}) => {
 
     const photoUrl = 'https://newsd.in/wp-content/uploads/2019/11/04d62c82df95ec3ff3a230c681b36a14.jpg'
 
@@ -23,7 +23,7 @@ const ProfileInfo = ({profile}) => {
                 <div>
                     <img src={profile.photos?.small !== null ? profile.photos?.small : photoUrl} className={s.avatar} alt='avatar'/>
 
-                    <ProfileStatus status='Hello my friend' />
+                    <ProfileStatus status={status} updateStatus={updateStatus} />
 
                     <span><b>About me:</b> {profile.aboutMe}</span>
                     <span><b>Looking for a job: </b> {profile.lookingForAJob ? 'Yes' : 'No'}</span>

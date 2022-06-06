@@ -8,7 +8,7 @@ const Post = ({message, likesCount}) => {
                  alt='avatar'
             />
             <p className={s.msg}>{message}</p>
-            <button className={`${s.btn} ${s.btn1}`}>like<span>&#128077;</span> {likesCount}</button>
+            <button className={`${s.btn} ${s.btn1}`}>like <span className={s.span}>&#128077;</span> {likesCount}</button>
         </div>
     );
 };

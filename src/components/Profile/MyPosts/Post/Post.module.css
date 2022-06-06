@@ -18,7 +18,7 @@
 
 .btn {
     width: 105px;
-    height: 30px;
+    height: 32px;
     color: #e3d322;
     border-radius: 5px;
     font-family: 'Lato', sans-serif;
@@ -33,7 +33,6 @@
     outline: none;
     letter-spacing: 1px;
     margin-left: 10px;
-    padding: 6px 2px 6px 6px;
 }
 
 .btn1 {
@@ -45,5 +44,9 @@
 .btn1:hover {
     background: rgb(0, 3, 255);
     background: linear-gradient(0deg, rgba(0, 3, 255, 1) 0%, rgba(2, 126, 251, 1) 100%);
+}
+
+.span {
+    display: inline-block;
 }
 

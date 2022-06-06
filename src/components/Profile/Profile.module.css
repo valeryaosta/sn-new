@@ -16,7 +16,7 @@
 .avatar {
     width: 160px;
     border-radius: 5px;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
 }
 
 .fullName {
@@ -35,3 +35,17 @@ span {
     line-height: 32px;
 }
 
+.input {
+    border-radius: 5px;
+    resize: none;
+    width: 100%;
+    background: #dbaa9e;
+    outline: none;
+    padding: 5px;
+    color: #634040;
+}
+
+.content {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
