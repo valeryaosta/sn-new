@@ -4,7 +4,7 @@
 
 .wrapper {
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     margin-top: 20px;
 }
 
@@ -54,22 +54,6 @@
 
 .btn2:hover {
     box-shadow: 0 0 40px 40px #e74c3c inset;
-}
-
-textarea {
-    border-radius: 5px;
-    resize: none;
-    width: 50%;
-    background: #dbaa9e;
-    outline: none;
-    padding: 10px;
-    margin-top: 5px;
-    color: #2f1d1d;
-}
-
-textarea::placeholder {
-    color: #2f1d1d;
-    font-weight: 500;
 }
 
 .postsWrapper {

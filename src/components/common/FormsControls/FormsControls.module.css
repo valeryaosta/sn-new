@@ -1,0 +1,35 @@
+
+.formControl.error input,
+.formControl.error textarea {
+    border: solid 2px red;
+}
+
+.formControl.error span {
+    color: red;
+    margin-top: -10px;
+}
+
+.textarea {
+    border-radius: 5px;
+    resize: none;
+    width: 500px;
+    background: #dbaa9e;
+    outline: none;
+    padding: 10px;
+    color: #2f1d1d;
+}
+
+.textarea::placeholder {
+    color: #2f1d1d;
+    font-weight: 500;
+}
+
+.input {
+    border-radius: 5px;
+    resize: none;
+    width: 100%;
+    background: #dbaa9e;
+    outline: none;
+    padding: 5px;
+    color: #634040;
+}
