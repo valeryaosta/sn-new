@@ -4,20 +4,16 @@ import style from '../Profile/MyPosts/MyPosts.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
 import {Navigate} from "react-router-dom";
+import {Field, reduxForm} from "redux-form";
 
 
-const Dialogs = ({dialogs, messages, newMessageText, addMessage, updateMessageText, isAuth}) => {
-
+const Dialogs = ({dialogs, messages, addMessage, isAuth}) => {
     const dialogsElements = dialogs.map((d) => <DialogItem id={d.id} name={d.name} key={d.id} ava={d.ava}/>)
     const messagesElements = messages.map((msg) => <Message message={msg.message} key={msg.id}/>)
 
-    const onAddPost = () => {
-        addMessage()
-    }
-
-    const onChangeHandle = (e) => {
-        let newText = e.currentTarget.value
-        updateMessageText(newText)
+    const submit = (values) => {
+        // console.log(values.newMessageBody)
+        addMessage(values.newMessageBody)
     }
 
     if (!isAuth) {
@@ -31,18 +27,29 @@ const Dialogs = ({dialogs, messages, newMessageText, addMessage, updateMessageTe
             </div>
             <div className={s.messages}>
                 {messagesElements}
-                <div className={s.messageArea}>
-                <textarea value={newMessageText}
-                          onChange={onChangeHandle}
-                          placeholder="Add a new message.."
-                          cols="30" rows="5"
-                />
-                    <button onClick={onAddPost} className={`${style.btn} ${style.btn1}`}>Add post</button>
-                </div>
+                <AddMessageReduxForm onSubmit={submit}/>
             </div>
-
         </div>
     );
 };
 
 export default Dialogs;
+
+
+export const AddMessageForm = (props) => {
+    const {handleSubmit} = props
+
+    return (
+        <form onSubmit={handleSubmit} className={s.messageArea}>
+            <Field name='newMessageBody'
+                   component='textarea'
+                   placeholder="Add a new message.."
+                   cols="100" rows="4"
+            />
+            <button className={`${style.btn} ${style.btn1}`}>Add post</button>
+        </form>
+    )
+}
+
+const AddMessageReduxForm = reduxForm({form: 'addMessageForm'})(AddMessageForm)
+

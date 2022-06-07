@@ -1,35 +1,19 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
+import {Field, reduxForm} from "redux-form";
 
-const MyPosts = ({posts, newPostText, addPost, updateNewPostText}) => {
-
-    const textareaRef = useRef(null)
-
+const MyPosts = ({posts, addPost}) => {
     const postsElements = posts.map((post) => <Post key={post.id} message={post.message} likesCount={post.likesCount}/>)
 
-    const onAddPost = () => {
-        addPost()
-    }
-
-    const onPostChange = () => {
-        let text = textareaRef.current.value
-        updateNewPostText(text)
+    const submit = (values) => {
+        addPost(values.newPostText)
     }
 
     return (
         <div className={s.postsBlock}>
-            MyPosts
-            <div className={s.wrapper}>
-            <textarea ref={textareaRef}
-                      placeholder="Remember, be nice!"
-                      value={newPostText}
-                      onChange={onPostChange}
-                      cols="30"
-                      rows="5"
-            />
-                <button onClick={onAddPost} className={`${s.btn} ${s.btn1}`}>Add post</button>
-            </div>
+            <h3>MyPosts</h3>
+            <AddPostReduxForm onSubmit={submit}/>
             <div className={s.postsWrapper}>
                 {postsElements}
             </div>
@@ -38,3 +22,22 @@ const MyPosts = ({posts, newPostText, addPost, updateNewPostText}) => {
 };
 
 export default MyPosts;
+
+
+export const AddPostForm = (props) => {
+    const {handleSubmit} = props
+
+    return (
+        <form onSubmit={handleSubmit} className={s.wrapper}>
+            <Field name='newPostText'
+                   component='textarea'
+                   placeholder="Remember, be nice!"
+                   cols="100"
+                   rows="4"
+            />
+            <button className={`${s.btn} ${s.btn1}`}>Add post</button>
+        </form>
+    )
+}
+
+const AddPostReduxForm = reduxForm({form: 'addPost'})(AddPostForm)
