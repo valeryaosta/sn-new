@@ -3,38 +3,56 @@ import {reduxForm} from "redux-form";
 import {Field} from 'redux-form'
 import {Input} from "../common/FormsControls/FormsControls";
 import {required} from "../../utils/validators";
+import s from './Login.module.css'
+import {connect} from "react-redux";
+import {login} from "../../redux/auth-reducer";
+import {Navigate} from "react-router-dom";
 
-const Login = () => {
+const Login = ({login, isAuth}) => {
     const submit = (values) => {
-        console.log(values)
+        login(values.email, values.password, values.rememberMe)
+    }
+
+    if (isAuth) {
+        return <Navigate to='/profile'/>
     }
 
     return (
-        <div>
+        <div className={s.formWrapper}>
             <h1>Login</h1>
             <LoginReduxForm onSubmit={submit}/>
         </div>
     );
 };
 
-export default Login;
+const mapStateToProps = (state) => {
+    return {
+        isAuth: state.auth.isAuth
+    }
+}
+
+export default connect(mapStateToProps, {login})(Login);
 
 export const LoginForm = (props) => {
     const {handleSubmit} = props
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={s.form}>
             <div>
                 {/*<label htmlFor="username">Username</label>*/}
-                <Field placeholder='username' name='username' component={Input} validate={[required]}/>
+                <Field placeholder='email' name='email' component={Input} validate={[required]}/>
             </div>
             <div>
                 {/*<label htmlFor="password">Password</label>*/}
-                <Field placeholder='password' name='password' component={Input} validate={[required]}/>
+                <Field placeholder='password' type='password' name='password' component={Input} validate={[required]}/>
             </div>
-            <div>
-                <Field name='rememberMe' component={Input} type='checkbox'/> remember me
+            <div className={s.rememberMe}>
+                <Field name='rememberMe' component={Input} type='checkbox' className={s.checkbox}/>
+                <span> remember me</span>
             </div>
-            <button>Login</button>
+
+
+            <button className={s.btn}>Login</button>
+
         </form>
     )
 }

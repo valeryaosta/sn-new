@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Averia+Sans+Libre&display=swap');
+
+.formWrapper {
+    margin: 20px 40px;
+    font-family: 'Averia Sans Libre', cursive;
+}
+
+.form {
+    width: 200px;
+}
+
+.rememberMe {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox {
+    height: 16px;
+    width: 16px;
+}
+
+.btn {
+    height: 30px;
+    text-align: center;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+}
