@@ -9,6 +9,13 @@
     margin-top: -10px;
 }
 
+.formSummaryError {
+    border: solid 2px red;
+    padding: 5px;
+    color: indianred;
+}
+
+
 .textarea {
     border-radius: 5px;
     resize: none;

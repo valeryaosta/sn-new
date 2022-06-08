@@ -4,6 +4,7 @@ import {Field} from 'redux-form'
 import {Input} from "../common/FormsControls/FormsControls";
 import {required} from "../../utils/validators";
 import s from './Login.module.css'
+import st from '../common/FormsControls/FormsControls.module.css'
 import {connect} from "react-redux";
 import {login} from "../../redux/auth-reducer";
 import {Navigate} from "react-router-dom";
@@ -34,7 +35,7 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {login})(Login);
 
 export const LoginForm = (props) => {
-    const {handleSubmit} = props
+    const {handleSubmit, error} = props
     return (
         <form onSubmit={handleSubmit} className={s.form}>
             <div>
@@ -50,7 +51,11 @@ export const LoginForm = (props) => {
                 <span> remember me</span>
             </div>
 
-
+            {error &&
+            <div className={st.formSummaryError}>
+                {error}
+            </div>
+            }
             <button className={s.btn}>Login</button>
 
         </form>
