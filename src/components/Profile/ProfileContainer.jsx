@@ -4,10 +4,11 @@ import {connect} from "react-redux";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {getStatus, getUserProfile, updateStatus} from "../../redux/profile-reducer";
 import {compose} from "redux";
+import WithAuthRedirect from "../../hoc/WithAuthRedirect";
 
 
 // wrapper function, which is identical in principle to withRouter (because of using router v6)
-function withRouter(Component) {
+export function withRouter(Component) {
     function ComponentWithRouterProp(props) {
         let location = useLocation();
         let navigate = useNavigate();
@@ -25,7 +26,6 @@ function withRouter(Component) {
 
 
 class ProfileContainer extends React.Component {
-
     componentDidMount() {
         let userId = this.props.router.params.userId;
         if (!userId) {
@@ -36,7 +36,6 @@ class ProfileContainer extends React.Component {
     }
 
     render() {
-
 
         return (
             <Profile {...this.props} profile={this.props.profile} status={this.props.status}
@@ -57,4 +56,5 @@ const mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps, {getUserProfile, getStatus, updateStatus}),
     withRouter,
+    WithAuthRedirect
 )(ProfileContainer)
