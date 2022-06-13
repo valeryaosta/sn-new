@@ -1,6 +1,7 @@
 import React from 'react';
 import style from '../Profile.module.css'
 
+// old version, now using ProfileStatusWithHooks
 class ProfileStatus extends React.Component {
     state = {
         editMode: false,
