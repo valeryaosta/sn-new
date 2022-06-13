@@ -13,8 +13,7 @@ import {compose} from "redux";
 import {
     getCurrentPage, getFollowingInProgress, getIsFetching,
     getPageSize,
-    getTotalUsersCount,
-    getUsers
+    getTotalUsersCount, getUsers,
 } from "../../redux/users.selectors";
 
 
