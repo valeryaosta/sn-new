@@ -31,7 +31,6 @@ export const usersAPI = {
         console.warn('Obsolete method. Please use ProfileAPI')
         return profileAPI.getProfile(userId)
     },
-
 }
 
 

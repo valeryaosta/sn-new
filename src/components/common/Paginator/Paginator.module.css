@@ -1,0 +1,10 @@
+.userPages {
+    display: flex;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.selectedPage {
+    font-weight: bold;
+}

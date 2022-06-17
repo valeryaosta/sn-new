@@ -1,7 +1,7 @@
 import React from 'react';
 import {reduxForm} from "redux-form";
 import {Field} from 'redux-form'
-import {Input} from "../common/FormsControls/FormsControls";
+import {createField, Input} from "../common/FormsControls/FormsControls";
 import {required} from "../../utils/validators";
 import s from './Login.module.css'
 import st from '../common/FormsControls/FormsControls.module.css'
@@ -34,18 +34,13 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {login})(Login);
 
-export const LoginForm = (props) => {
-    const {handleSubmit, error} = props
+export const LoginForm = ({handleSubmit, error}) => {
     return (
         <form onSubmit={handleSubmit} className={s.form}>
-            <div>
-                {/*<label htmlFor="username">Username</label>*/}
-                <Field placeholder='email' name='email' component={Input} validate={[required]}/>
-            </div>
-            <div>
-                {/*<label htmlFor="password">Password</label>*/}
-                <Field placeholder='password' type='password' name='password' component={Input} validate={[required]}/>
-            </div>
+            {createField('email', 'email', Input, [required])}
+            {createField('password', 'password', Input, [required], {type: 'password'})}
+            {/*{createField(null, 'rememberMe', Input, [], {type: 'checkbox'}, "remember me", {cn: 'remember'})}*/}
+
             <div className={s.rememberMe}>
                 <Field name='rememberMe' component={Input} type='checkbox' className={s.checkbox}/>
                 <span> remember me</span>
@@ -56,10 +51,11 @@ export const LoginForm = (props) => {
                 {error}
             </div>
             }
-            <button className={s.btn}>Login</button>
 
+            <button className={s.btn}>Login</button>
         </form>
     )
 }
 
 const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
+
