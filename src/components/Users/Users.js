@@ -17,11 +17,11 @@ const Users = ({
 
     return (
         <>
-            <Paginator currentPage={currentPage} onPageChanged={onPageChanged} totalUsersCount={totalUsersCount}
-                       pageSize={pageSize}
+            {/*<h2 className={style.name}>Users</h2>*/}
+            <Paginator currentPage={currentPage} onPageChanged={onPageChanged} totalItemsCount={totalUsersCount}
+                       pageSize={pageSize} portionSize={20}
             />
 
-            <h2 className={style.name}>Users</h2>
             <div className={style.usersBlock}>
                 {users.map((u) => <User key={u.id}
                                         user={u}

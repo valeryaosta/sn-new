@@ -1,10 +1,32 @@
-.userPages {
+.paginator {
     display: flex;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    margin: 20px;
 }
 
-.selectedPage {
+.pageNumber {
+    padding: 0 6px;
+    border: 1px solid #ae8e8e;
+    background: #dddfb8;
+    cursor: pointer;
+}
+
+.pageNumber.selectedPage {
+    cursor: pointer;
+    font-weight: bold;
+    border-color: black;
+    background: #ded843;
+}
+
+.btn {
+    cursor: pointer;
+    background-color: #e1d65d;
+}
+
+.btn:hover,
+.pageNumber:hover {
+    background: #dbe273;
+}
+
+.btn:hover {
     font-weight: bold;
 }
