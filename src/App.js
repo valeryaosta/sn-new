@@ -2,19 +2,22 @@ import React from "react";
 import './App.css';
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
-import ProfileContainer, {withRouter} from "./components/Profile/ProfileContainer";
+import {withRouter} from "./components/Profile/ProfileContainer";
 import {Navigate, Route, Routes} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import Login from "./components/Login/Login";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
+import withSuspense from "./hoc/WithSuspense";
+
+const Login = withSuspense(React.lazy(() => import('../src/components/Login/Login')));
+const DialogsContainer = withSuspense(React.lazy(() => import('./components/Dialogs/DialogsContainer')));
+const ProfileContainer = withSuspense(React.lazy(() => import('./components/Profile/ProfileContainer')));
 
 
 class App extends React.Component {
