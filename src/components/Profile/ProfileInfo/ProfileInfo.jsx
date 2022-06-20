@@ -3,12 +3,18 @@ import s from "../Profile.module.css";
 import Preloader from "../../common/Preloader/Preloader";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
-const ProfileInfo = ({profile, status, updateStatus}) => {
+const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
 
     const photoUrl = 'https://newsd.in/wp-content/uploads/2019/11/04d62c82df95ec3ff3a230c681b36a14.jpg'
 
     if (!profile) {
         return <Preloader/>
+    }
+
+    const onAvatarChanged = (e) => {
+        if (e.target.files.length) {
+            savePhoto(e.target.files[0])
+        }
     }
 
     return (
@@ -21,9 +27,10 @@ const ProfileInfo = ({profile, status, updateStatus}) => {
             </div>
             <div className={s.description}>
                 <div>
-                    <img src={profile.photos?.small !== null ? profile.photos?.small : photoUrl} className={s.avatar}
+                    <img src={profile.photos.large || photoUrl} className={s.avatar}
                          alt='avatar'
                     />
+                    {isOwner && <input type='file' onChange={onAvatarChanged} id='fileBtn'/>}
 
                     <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
 

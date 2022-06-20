@@ -21,7 +21,9 @@ const Header = ({login, logout, isAuth}) => {
                     ? <div> {login} &nbsp;
                         <button onClick={onLogout} className={st.btn}>Logout</button>
                     </div>
-                    : <NavLink to='/login'>Login</NavLink>
+                    : <div>
+                        <NavLink to='/login' className={st.btn}>Login</NavLink>
+                    </div>
                 }
             </div>
         </header>
