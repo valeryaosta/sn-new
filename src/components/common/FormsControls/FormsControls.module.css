@@ -21,15 +21,29 @@
     resize: none;
     width: 500px;
     background: #dbaa9e;
-    outline: none;
     padding: 10px;
-    color: #2f1d1d;
 }
 
 .textarea::placeholder {
     color: #2f1d1d;
     font-weight: 500;
+    outline-color: rgb(99, 64, 64)
 }
+
+.textarea2 {
+    border-radius: 5px;
+    resize: none;
+    width: 100%;
+    background: #dbaa9e;
+    padding: 10px;
+}
+
+.textarea2::placeholder {
+    color: #2f1d1d;
+    font-weight: 500;
+    outline-color: rgb(99, 64, 64)
+}
+
 
 .input {
     border-radius: 5px;
