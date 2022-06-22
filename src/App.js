@@ -13,6 +13,7 @@ import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
 import withSuspense from "./hoc/WithSuspense";
+import Error from "./components/Error/Error";
 
 const Login = withSuspense(React.lazy(() => import('../src/components/Login/Login')));
 const DialogsContainer = withSuspense(React.lazy(() => import('./components/Dialogs/DialogsContainer')));
@@ -23,6 +24,16 @@ class App extends React.Component {
 
     componentDidMount() {
         this.props.initializeApp()
+        window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors)
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('unhandledrejection', this.catchAllUnhandledErrors)
+    }
+
+    catchAllUnhandledErrors = (promiseRejectionEvent) => {
+        alert('Some error occurred')
+        console.error('promiseRejectionEvent', promiseRejectionEvent)
     }
 
     render() {
@@ -37,7 +48,7 @@ class App extends React.Component {
                 <Navbar/>
                 <div className='app-wrapper-content'>
                     <Routes>
-                        <Route path='/' element={<Navigate to='/login'/>}/>
+                        <Route path="/" element={<Navigate to='/login'/>}/>
                         <Route path='/profile/' element={<ProfileContainer/>}/>
                         <Route path='/profile/:userId' element={<ProfileContainer/>}/>
 
@@ -49,7 +60,7 @@ class App extends React.Component {
 
                         <Route path='/login' element={<Login/>}/>
 
-                        <Route path='/404' element={<h1>Something went wrong...</h1>}/>
+                        <Route path='/404' element={<Error/>}/>
                         <Route path='*' element={<Navigate to='/404'/>}/>
                     </Routes>
                 </div>

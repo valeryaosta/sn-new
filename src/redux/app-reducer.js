@@ -26,7 +26,7 @@ export default appReducer
 export const setInitialized = () => ({type: INITIALIZED_SUCCESS})
 
 // TC
-export const initializeApp = () => (dispatch) => {
+export const  initializeApp = () => (dispatch) => {
     let promise = dispatch(getAuthUserData())
     promise.then(() => {
         dispatch(setInitialized())

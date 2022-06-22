@@ -8,11 +8,6 @@ body {
     background: #e1d6e2;
 }
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 body::-webkit-scrollbar {
     width: 13px; /* width of the entire scrollbar */
 }
