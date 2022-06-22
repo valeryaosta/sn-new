@@ -2,8 +2,7 @@
     display: grid;
     grid-template-areas:
     'h h h'
-    'n c c'
-    'f f f';
+    'n c c';
     grid-template-rows: 40px 1fr;
     grid-template-columns: 2fr 5fr 5fr;
     /*grid-gap: 10px;*/

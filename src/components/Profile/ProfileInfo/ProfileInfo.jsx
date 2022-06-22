@@ -3,6 +3,7 @@ import s from "../Profile.module.css";
 import Preloader from "../../common/Preloader/Preloader";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import {ProfileDataReduxForm} from "../ProfileDataForm";
+import photo from "../../../assets/main.jpg"
 
 
 const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, saveProfile}) => {
@@ -30,7 +31,7 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
         <div>
             <div>
                 <img className={s.image}
-                     src='https://stopfake.kz/wp-content/uploads/2020/09/1-3.jpg'
+                     src={photo}
                      alt='main'
                 />
             </div>

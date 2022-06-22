@@ -9,9 +9,9 @@ import {connect} from "react-redux";
 import {login} from "../../redux/auth-reducer";
 import {Navigate} from "react-router-dom";
 
-const Login = ({login, isAuth}) => {
+const Login = ({login, isAuth, captchaUrl}) => {
     const submit = (values) => {
-        login(values.email, values.password, values.rememberMe)
+        login(values.email, values.password, values.rememberMe, values.captcha)
     }
 
     if (isAuth) {
@@ -19,32 +19,52 @@ const Login = ({login, isAuth}) => {
     }
 
     return (
-        <div className={s.formWrapper}>
-            <h1>Login</h1>
-            <LoginReduxForm onSubmit={submit}/>
-        </div>
+        <>
+            <div className={s.formWrapper}>
+                <h1>Login</h1>
+                <LoginReduxForm onSubmit={submit} captchaUrl={captchaUrl}/>
+            </div>
+
+            <div className={s.freeAccWrapper}>
+                <h2>Hello... Thank You for visiting my Application!</h2>
+                <h3>If you don't have personal account here, use test data:</h3>
+                <p><b>Email: </b> free@samuraijs.com</p>
+                <p><b>Password: </b> free</p>
+            </div>
+        </>
+
+
     );
 };
 
 const mapStateToProps = (state) => {
     return {
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        captchaUrl: state.auth.captchaUrl
     }
 }
 
 export default connect(mapStateToProps, {login})(Login);
 
-export const LoginForm = ({handleSubmit, error}) => {
+export const LoginForm = ({handleSubmit, error, captchaUrl}) => {
     return (
         <form onSubmit={handleSubmit} className={s.form}>
-            {createField('email', 'email', Input, [required])}
-            {createField('password', 'password', Input, [required], {type: 'password'})}
-            {/*{createField(null, 'rememberMe', Input, [], {type: 'checkbox'}, "remember me", {cn: 'remember'})}*/}
+            <div className={s.inputForm}>{createField('email', 'email', Input, [required])}</div>
+            <div
+                className={s.inputForm}>{createField('password', 'password', Input, [required], {type: 'password'})}
+            </div>
 
             <div className={s.rememberMe}>
                 <Field name='rememberMe' component={Input} type='checkbox' className={s.checkbox}/>
                 <span> remember me</span>
             </div>
+
+            {captchaUrl && <div className={s.captcha}><img src={captchaUrl} alt='captcha'/></div>}
+            {captchaUrl &&
+                <div className={s.inputForm}>
+                    {createField('anti-bot symbols from captcha','captcha', Input, [required])}
+                </div>
+            }
 
             {error &&
             <div className={st.formSummaryError}>

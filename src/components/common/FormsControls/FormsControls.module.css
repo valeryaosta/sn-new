@@ -6,7 +6,7 @@
 
 .formControl.error span {
     color: red;
-    margin-top: -10px;
+    /*margin-top: -10px;*/
 }
 
 .formSummaryError {
@@ -53,4 +53,8 @@
     outline: none;
     padding: 5px;
     color: #634040;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px  #dbaa9e  inset;
 }

@@ -1,7 +1,6 @@
 import React from "react";
-import './App.css';
+import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
-import Footer from "./components/Footer/Footer";
 import {withRouter} from "./components/Profile/ProfileContainer";
 import {Navigate, Route, Routes} from "react-router-dom";
 import News from "./components/News/News";
@@ -38,7 +37,7 @@ class App extends React.Component {
                 <Navbar/>
                 <div className='app-wrapper-content'>
                     <Routes>
-                        <Route path="/" element={<Navigate to='/login'/>}/>
+                        <Route path='/' element={<Navigate to='/login'/>}/>
                         <Route path='/profile/' element={<ProfileContainer/>}/>
                         <Route path='/profile/:userId' element={<ProfileContainer/>}/>
 
@@ -54,7 +53,6 @@ class App extends React.Component {
                         <Route path='*' element={<Navigate to='/404'/>}/>
                     </Routes>
                 </div>
-                <Footer/>
             </div>
         );
     }

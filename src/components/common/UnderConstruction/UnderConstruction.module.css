@@ -1,0 +1,17 @@
+.image {
+    width: 100%;
+}
+
+.image img {
+    width: 98%;
+}
+
+.wrapper {
+    margin-left: 20px;
+}
+
+.wrapper h2{
+    color: #8d7111;
+
+    text-shadow: 1px 2px 3px #8e8989;
+}
